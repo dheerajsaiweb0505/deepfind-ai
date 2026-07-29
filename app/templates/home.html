@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="background"></div>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <span class="logo-icon">⬢</span>
+
+        <span>DeepFind AI </span>
+
+    </div>
+
+    <div class="nav-center">
+
+        <a class="active" href="/">Home</a>
+
+        <a href="#">Docs</a>
+
+        <a href="#">GitHub</a>
+
+    </div>
+
+    <div class="nav-right">
+
+        <div class="theme-dropdown">
+
+            <button id="theme-btn">
+
+                🌙
+
+            </button>
+
+            <div id="theme-menu">
+
+                <button data-theme="light">
+
+                    ☀ Light
+
+                </button>
+
+                <button data-theme="dark">
+
+                    🌙 Dark
+
+                </button>
+
+                <button data-theme="system">
+
+                    💻 System
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <a href="/login" class="login-btn">
+
+            Login
+
+        </a>
+
+    </div>
+
+</nav>
+<section class="hero">
+
+    <h1>
+
+        Search Smarter.
+        <br>
+
+        Think Deeper.
+
+    </h1>
+
+    <p>
+
+        AI Search Engine powered by Hybrid Search,
+        RAG and Multi-Agent Intelligence.
+
+    </p>
+
+    <div class="search">
+
+        <input
+                type="text"
+                placeholder="Ask anything..."
+        >
+
+        <button>
+
+            🔍
+
+        </button>
+
+    </div>
+
+</section>
+
+<section class="features">
+
+    <div class="card">
+
+        <h2>⚡ AI Powered</h2>
+
+        <p>
+
+            GPT + Gemini + Local Models
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🌐 Live Web</h2>
+
+        <p>
+
+            Latest Internet Results
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>📚 RAG Search</h2>
+
+        <p>
+
+            Search PDFs and Knowledge Bases
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🧠 Multi-Agent</h2>
+
+        <p>
+
+            Planner • Retriever • Reasoner
+
+        </p>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <h2>DeepFind AI</h2>
+
+            <p>
+
+                Search Smarter.
+                Think Deeper.
+
+            </p>
+
+            <span>
+
+                Hybrid Search • RAG • Multi-Agent AI
+
+            </span>
+
+        </div>
+
+        <div class="footer-links">
+
+            <div>
+
+                <h3>Platform</h3>
+
+                <a href="#">Search</a>
+                <a href="#">AI Chat</a>
+                <a href="#">API</a>
+                <a href="#">RAG</a>
+
+            </div>
+
+            <div>
+
+                <h3>Company</h3>
+
+                <a href="#">GitHub</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Careers</a>
+
+            </div>
+
+            <div>
+
+                <h3>Resources</h3>
+
+                <a href="#">Documentation</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Blog</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+
+            © 2026 DeepFind AI. All Rights Reserved.
+
+        </p>
+
+        <p>
+
+            Built with ❤️ by Dheeraj Sai Emmadishetti
+
+        </p>
+
+    </div>
+
+</footer>
+
+{% endblock %}
