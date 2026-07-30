@@ -1,11 +1,27 @@
+from sqlalchemy.orm import Session
+
+from app.models.user import User
+from app.repositories.search_repository import SearchRepository
 from app.schemas.search import SearchResult
 
 
 class SearchService:
 
     @staticmethod
-    def search(query: str):
+    def search(
+        db: Session,
+        query: str,
+        user: User,
+    ):
 
+        # Save search history
+        SearchRepository.save(
+            db=db,
+            query=query,
+            user_id=user.id,
+        )
+
+        # Dummy results (replace with real search provider later)
         return [
 
             SearchResult(

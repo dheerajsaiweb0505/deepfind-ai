@@ -21,20 +21,19 @@ async function search(event){
         .getElementById("search-input")
         .value;
 
-    const response = await fetch(
-        "/api/v1/search",
-        {
-            method:"POST",
+    const response = await fetch("/api/v1/search", {
+    method: "POST",
 
-            headers:{
-                "Content-Type":"application/json"
-            },
+    credentials: "same-origin",
 
-            body:JSON.stringify({
-                query
-            })
-        }
-    );
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+        query
+    })
+});
 
     const data = await response.json();
     loading.classList.add("hidden");

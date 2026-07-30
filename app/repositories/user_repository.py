@@ -39,3 +39,47 @@ class UserRepository:
         db.refresh(db_user)
 
         return db_user
+
+from app.models.search_history import SearchHistory
+
+
+class SearchRepository:
+
+    @staticmethod
+    def create(
+        db,
+        query,
+        user_id
+    ):
+
+        search = SearchHistory(
+            query=query,
+            user_id=user_id
+        )
+
+        db.add(search)
+
+        db.commit()
+
+        db.refresh(search)
+
+        return search
+
+    @staticmethod
+    def get_recent(
+        db,
+        user_id,
+        limit=10
+    ):
+
+        return (
+            db.query(SearchHistory)
+            .filter(
+                SearchHistory.user_id == user_id
+            )
+            .order_by(
+                SearchHistory.created_at.desc()
+            )
+            .limit(limit)
+            .all()
+        )

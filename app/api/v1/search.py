@@ -1,4 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from app.db.database import get_db
+from app.core.security import get_current_user
+from app.models.user import User
 
 from app.schemas.search import (
     SearchRequest,
@@ -18,11 +23,15 @@ router = APIRouter(
     response_model=SearchResponse
 )
 def search(
-    request: SearchRequest
+    request: SearchRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
 
     results = SearchService.search(
-        request.query
+        db=db,
+        query=request.query,
+        user=current_user,
     )
 
     return {
