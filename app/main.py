@@ -70,3 +70,17 @@ async def dashboard_page(
             "user": current_user,
         },
     )
+
+@app.get("/search")
+async def search_page(
+    request: Request,
+    current_user: User = Depends(get_current_user),
+):
+    return templates.TemplateResponse(
+        request=request,
+        name="search.html",
+        context={
+            "request": request,
+            "user": current_user,
+        },
+    )

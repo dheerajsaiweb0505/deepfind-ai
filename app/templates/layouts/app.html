@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        DeepFind AI
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="/static/css/dashboard.css">
+          <link rel="stylesheet" href="/static/css/search.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>🔍 DeepFind AI</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="/dashboard" class="active">
+                Dashboard
+            </a>
+
+            <a href="/search">
+                AI Search
+            </a>
+
+            <a href="/chat">
+                AI Chat
+            </a>
+
+            <a href="/projects">
+                Projects
+            </a>
+
+            <a href="/history">
+                History
+            </a>
+
+            <a href="/favorites">
+                Favorites
+            </a>
+
+            <a href="/settings">
+                Settings
+            </a>
+
+        </nav>
+
+        <button id="logout-btn">
+            Logout
+        </button>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <!-- Top Bar -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h2>
+                    Welcome,
+                    {{ user.username }}
+                </h2>
+
+                <p>
+                    AI Powered Search Engine
+                </p>
+
+            </div>
+
+            <div class="profile">
+
+                👤 {{ user.username }}
+
+            </div>
+
+        </header>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+</div>
+
+<script src="/static/js/auth.js"></script>
+<script src="/static/js/dashboard.js"></script>
+<script src="/static/js/search.js"></script>
+
+</body>
+
+</html>

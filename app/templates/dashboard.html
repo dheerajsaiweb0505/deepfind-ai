@@ -1,19 +1,76 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard Test</title>
-</head>
+{% extends "layouts/app.html" %}
 
-<body style="background:#111;color:white;font-family:Arial;text-align:center;padding-top:100px;">
+{% block title %}
+Dashboard
+{% endblock %}
 
-    <h1>🎉 DASHBOARD IS WORKING</h1>
+{% block content %}
 
-        <h2>Welcome {{ user.username }}</h2>
-    <button id="logout-btn">
-        Logout
-    </button>
+<section class="hero">
 
-    <script src="/static/js/auth.js"></script>
+    
 
-</body>
-</html>
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="Search anything..."
+        >
+
+        <button>
+            🚀 Search
+        </button>
+
+    </div>
+
+</section>
+
+<section class="quick-actions">
+
+    <div class="action-card">
+        🤖
+        <h3>AI Chat</h3>
+    </div>
+
+    <div class="action-card">
+        📄
+        <h3>Research</h3>
+    </div>
+
+    <div class="action-card">
+        📂
+        <h3>Projects</h3>
+    </div>
+
+    <div class="action-card">
+        📑
+        <h3>Upload Docs</h3>
+    </div>
+
+</section>
+
+<section class="cards">
+
+    <div class="card">
+        <h1>14</h1>
+        <p>Total Searches</p>
+    </div>
+
+    <div class="card">
+        <h1>6</h1>
+        <p>Projects</p>
+    </div>
+
+    <div class="card">
+        <h1>32</h1>
+        <p>Saved Results</p>
+    </div>
+
+    <div class="card">
+        <h1>4</h1>
+        <p>AI Chats</p>
+    </div>
+
+</section>
+
+{% endblock %}

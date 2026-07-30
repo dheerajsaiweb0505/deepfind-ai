@@ -1,0 +1,52 @@
+{% extends "layouts/app.html" %}
+
+{% block title %}
+AI Search
+{% endblock %}
+
+{% block content %}
+<div id="loading" class="loading hidden">
+
+    <div class="spinner"></div>
+
+    <p>
+
+        DeepFind AI is searching...
+
+    </p>
+
+</div>
+
+<div id="summary"></div>
+
+<div id="results"></div>
+
+<section class="search-page">
+
+    <h1>🔍 AI Search</h1>
+
+    <p>
+        Search the web with AI-powered results.
+    </p>
+
+    <form id="search-form">
+
+        <input
+            id="search-input"
+            type="text"
+            placeholder="Search anything..."
+            autocomplete="off"
+            required
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+    <div id="results"></div>
+
+</section>
+
+{% endblock %}

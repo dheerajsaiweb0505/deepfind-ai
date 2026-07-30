@@ -1,0 +1,182 @@
+.search-page{
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+.search-page h1{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.search-page p{
+
+    color:#94a3b8;
+
+    margin-bottom:30px;
+
+}
+
+#search-form{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:40px;
+
+}
+
+#search-input{
+
+    flex:1;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#1e293b;
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+#search-form button{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:18px 28px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+}
+
+.result-card{
+
+    background:#1e293b;
+
+    padding:20px;
+
+    border-radius:16px;
+
+    margin-bottom:20px;
+
+}
+
+.result-card h3{
+
+    color:#60a5fa;
+
+    margin-bottom:10px;
+
+}
+
+.result-card a{
+
+    color:#22c55e;
+
+    text-decoration:none;
+
+}
+
+.result-card p{
+
+    margin-top:10px;
+
+    color:#cbd5e1;
+
+}
+/* ===========================
+   Loading
+=========================== */
+
+.hidden{
+
+display:none;
+
+}
+
+.loading{
+
+text-align:center;
+
+padding:40px;
+
+}
+
+.spinner{
+
+width:50px;
+
+height:50px;
+
+margin:auto;
+
+border:5px solid #334155;
+
+border-top:5px solid #3b82f6;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+margin-bottom:20px;
+
+}
+
+@keyframes spin{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* ===========================
+AI Summary
+=========================== */
+
+#summary{
+
+margin-bottom:30px;
+
+background:#1e293b;
+
+padding:25px;
+
+border-radius:16px;
+
+border-left:5px solid #3b82f6;
+
+}
+
+#summary h2{
+
+margin-bottom:15px;
+
+}
