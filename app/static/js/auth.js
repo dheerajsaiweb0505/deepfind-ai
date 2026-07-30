@@ -2,7 +2,9 @@ console.log("✅ auth.js loaded");
 
 const API_BASE = "/api/v1";
 
-/* ---------------- REGISTER ---------------- */
+/* ============================
+   REGISTER
+============================ */
 
 async function register(event) {
     event.preventDefault();
@@ -15,13 +17,13 @@ async function register(event) {
         const response = await fetch(`${API_BASE}/auth/register`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 username,
                 email,
-                password,
-            }),
+                password
+            })
         });
 
         const data = await response.json();
@@ -32,13 +34,17 @@ async function register(event) {
         } else {
             alert(data.detail || "Registration failed.");
         }
+
     } catch (error) {
         console.error(error);
         alert("Unable to connect to the server.");
     }
 }
 
-/* ---------------- LOGIN ---------------- */
+
+/* ============================
+   LOGIN
+============================ */
 
 async function login(event) {
     event.preventDefault();
@@ -49,16 +55,18 @@ async function login(event) {
     const password = document.getElementById("password").value;
 
     const formData = new URLSearchParams();
+
     formData.append("username", email);
     formData.append("password", password);
 
     try {
+
         const response = await fetch(`${API_BASE}/auth/login`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: formData,
+            body: formData
         });
 
         const data = await response.json();
@@ -67,34 +75,89 @@ async function login(event) {
         console.log(data);
 
         if (response.ok) {
+
+            // If you're using JWT in localStorage
+          
+
             console.log("✅ Login Successful");
             console.log("➡ Redirecting to Dashboard");
 
-            // Uncomment this if you're using JWT in localStorage
-            // localStorage.setItem("access_token", data.access_token);
-
             window.location.href = "/dashboard";
+
         } else {
+
             alert(data.detail || "Invalid email or password.");
+
         }
+
     } catch (error) {
+
         console.error(error);
+
         alert("Unable to connect to the server.");
+
     }
 }
 
-/* ---------------- EVENT LISTENERS ---------------- */
 
-const registerForm = document.getElementById("register-form");
+/* ============================
+   LOGOUT
+============================ */
 
-if (registerForm) {
-    console.log("✅ Register form found");
-    registerForm.addEventListener("submit", register);
+async function logout() {
+
+    alert("Logout button clicked!");
+
+    console.log("Logout button clicked!");
+
+    try {
+
+        const response = await fetch(`${API_BASE}/auth/logout`, {
+            method: "POST"
+        });
+
+        console.log("Response Status:", response.status);
+
+
+        window.location.href = "/login";
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
 }
+/* ============================
+   EVENT LISTENERS
+============================ */
 
-const loginForm = document.getElementById("login-form");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (loginForm) {
-    console.log("✅ Login form found");
-    loginForm.addEventListener("submit", login);
-}
+    console.log("DOM Loaded ✅");
+
+    const registerForm = document.getElementById("register-form");
+
+    if (registerForm) {
+        console.log("Register form found");
+        registerForm.addEventListener("submit", register);
+    }
+
+    const loginForm = document.getElementById("login-form");
+
+    if (loginForm) {
+        console.log("Login form found");
+        loginForm.addEventListener("submit", login);
+    }
+
+    const logoutBtn = document.getElementById("logout-btn");
+
+    console.log("Logout Button =", logoutBtn);
+
+    if (logoutBtn) {
+        console.log("Logout button event attached");
+
+        logoutBtn.addEventListener("click", logout);
+    }
+
+});

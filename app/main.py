@@ -4,7 +4,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI, Request, Depends
 from app.core.config import settings
 
-
+from app.core.security import get_current_user
+from app.models.user import User
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -52,12 +53,20 @@ async def register_page(request: Request):
     )
 
 
+from fastapi import Depends
+from app.core.security import get_current_user
+from app.models.user import User
+
 @app.get("/dashboard")
-async def dashboard_page(request: Request):
+async def dashboard_page(
+    request: Request,
+    current_user: User = Depends(get_current_user),
+):
     return templates.TemplateResponse(
         request=request,
         name="dashboard.html",
         context={
             "request": request,
+            "user": current_user,
         },
     )

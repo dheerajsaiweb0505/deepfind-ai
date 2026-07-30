@@ -1,16 +1,16 @@
 from fastapi import APIRouter, Depends, HTTPException, Response
+from fastapi.responses import JSONResponse
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-
 
 from app.db.database import get_db
 from app.schemas.user import (
     UserCreate,
     UserResponse,
     UserLogin,
-    Token,
 )
 from app.services.auth_service import AuthService
-from fastapi.security import OAuth2PasswordRequestForm
+
 router = APIRouter(
     prefix="/auth",
     tags=["Authentication"]
@@ -36,13 +36,13 @@ def register(
         )
 
 
-@router.post("/login", response_model=Token)
+@router.post("/login")
 def login(
-    response: Response,
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db),
 ):
     try:
+
         credentials = UserLogin(
             email=form_data.username,
             password=form_data.password,
@@ -50,19 +50,39 @@ def login(
 
         token = AuthService.login(db, credentials)
 
-        response.set_cookie(
-            key="access_token",
-            value=token["access_token"],   # <-- FIX
-            httponly=True,
-            samesite="lax",
-            secure=False,
-            max_age=86400,
+        response = JSONResponse(
+            content={
+                "message": "Login successful"
+            }
         )
 
-        return token
+        response.set_cookie(
+            key="access_token",
+            value=token["access_token"],
+            httponly=True,
+            samesite="lax",
+            secure=False,      # True when using HTTPS
+            max_age=3600
+        )
+
+        return response
 
     except ValueError as e:
         raise HTTPException(
             status_code=401,
             detail=str(e),
         )
+
+
+@router.post("/logout")
+def logout():
+
+    response = JSONResponse(
+        content={
+            "message": "Logged out successfully"
+        }
+    )
+
+    response.delete_cookie("access_token")
+
+    return response
