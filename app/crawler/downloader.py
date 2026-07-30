@@ -37,3 +37,4 @@ class Downloader:
         except requests.RequestException as e:
             print(e)
             return None
+        
